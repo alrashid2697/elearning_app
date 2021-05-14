@@ -20,3 +20,23 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Users Login
+Route::get('/admin', 'AdminController@index')->name('admin');
+Route::get('/user', 'UserController@index')->name('user');
+
+
+// Admin Categories routes
+Route::get('/admin/createcategory', 'CategoryController@create');
+Route::post('/admin/', 'CategoryController@store');
+Route::get('/admin/{category}/infocategory','CategoryController@show');
+Route::get('/admin/{category}/editcategory','CategoryController@edit');
+Route::patch('/admin/{category}','CategoryController@update');
+Route::delete('/admin/{category}','CategoryController@destroy');
+
+
+
+
+
+
+

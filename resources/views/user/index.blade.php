@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row mx-auto">
         <div class="col-md-4 ">
-            <h2 class="font-weight-light mb-3">Dashboard</h2>
+            <h2 class="font-weight-light mb-3">User Dashboard</h2>
             <div class="d-flex justify-content-center align-content-center">
                 <div class="profile-pic">
                     <img src="{{asset('img/profile.jpg')}}" alt="" >
