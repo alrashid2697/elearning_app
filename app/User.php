@@ -40,4 +40,20 @@ class User extends Authenticatable
     protected $attributes = [
         'role' => 1,
     ];
+
+    public function following()
+    {
+        return $this->belongsToMany('App\User', 'follows', 'follower_id', 'followed_id');
+    }
+
+    public function is_following($id)
+    {
+        if($this->following()->where('followed_id', $id)->count() > 0)
+        {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }
