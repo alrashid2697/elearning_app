@@ -26,13 +26,28 @@ Route::get('/admin', 'AdminController@index')->name('admin');
 Route::get('/user', 'UserController@index')->name('user');
 
 
-// Admin Categories routes
+// Admin Categories route
 Route::get('/admin/createcategory', 'CategoryController@create');
 Route::post('/admin/', 'CategoryController@store');
 Route::get('/admin/{category}/infocategory','CategoryController@show');
 Route::get('/admin/{category}/editcategory','CategoryController@edit');
 Route::patch('/admin/{category}','CategoryController@update');
 Route::delete('/admin/{category}','CategoryController@destroy');
+
+
+// Admin User Creation route
+Route::get('/admin/listuser', 'AdminController@listUsers');
+Route::get('/admin/adduser', 'AdminController@addUser');
+Route::post('/admin/listuser/', 'AdminController@createUser');
+Route::get('/admin/{user}/edituser', 'AdminController@editUser');
+Route::patch('/admin/listuser/{user}', 'AdminController@updateUser');
+Route::delete('/admin/listuser/{user}', 'AdminController@destroyUser');
+
+
+
+
+
+
 
 
 
