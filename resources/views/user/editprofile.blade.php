@@ -4,11 +4,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Edit User</div>
+            <div class="card shadow">
+                <div class="card-header">Edit Profile</div>
 
                 <div class="card-body">
-                    <form  action="/admin/listuser/{{$user->id}}" method="POST">
+                    <form  action="/profile/{{$user->id}}" method="POST">
                         @csrf
                         @method('PATCH')
                         <div class="form-group row">
@@ -57,7 +57,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  required autocomplete="new-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -71,42 +71,15 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation"  required autocomplete="new-password">
                             </div>
-                        </div>
-
-                        <div class="form-group row">
-                            @if ($user->role == 1)
-                                <div class="form-check mx-auto">
-                                    <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="role" id="admin" value="1" checked>
-                                    Admin
-                                    </label>
-                                    <label class="form-check-label ml-5">
-                                    <input type="radio" class="form-check-input" name="role" id="user" value="0">
-                                    User
-                                    </label>
-                                </div>
-                                @else
-                                <div class="form-check mx-auto">
-                                    <label class="form-check-label">
-                                    <input type="radio" class="form-check-input" name="role" id="admin" value="1" >
-                                    Admin
-                                    </label>
-                                    <label class="form-check-label ml-5">
-                                    <input type="radio" class="form-check-input" name="role" id="user" value="0" checked>
-                                    User
-                                    </label>
-                                </div>
-                              @endif
                         </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                   Submit
+                                   Update
                                 </button>
-                                <a href="{{ url('/admin/listuser')}}" class="btn btn-secondary my-3" role="button"> Cancel</a>
                             </div>
                         </div>
                     </form>

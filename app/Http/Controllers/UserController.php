@@ -3,7 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+<<<<<<< Updated upstream
 use App\User;
+=======
+<<<<<<< Updated upstream
+=======
+use Illuminate\Support\Facades\Hash;
+use App\User;
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 
 class UserController extends Controller
 {
@@ -11,6 +19,11 @@ class UserController extends Controller
     {
         return view('/user.index');
     }
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
 
     public function listOfUsers()
     {
@@ -33,4 +46,63 @@ class UserController extends Controller
         return redirect()->back();
     }
 
+<<<<<<< Updated upstream
+=======
+    public function profile(User $users)
+    {
+        $following = $users->following()->get();
+        $followers = $users->followers()->get();
+
+        return view('/profile',compact('users','following','followers',$users, $following, $followers));
+    }
+
+    public function following($id)
+    {
+        $user = User::find($id);
+        $following = $user->following()->get();
+
+        return view('following', compact('following','user'));
+
+    }
+    public function followers($id)
+    {
+        $user = User::find($id);
+        $follower = $user->followers()->get();
+
+        return view('followers', compact('follower','user'));
+    }
+
+    public function editProfile(User $user)
+    {
+       return view('/user/editprofile', compact('user'));
+
+    }
+    public function updateProfile(Request $request, User $user)
+    {
+
+        if(auth()->user()->role == 0 || auth()->user()->role == null)
+        {
+            $user->update([
+                'fname'=> $request->fname,
+                'lname'=> $request->lname,
+                'email'=> $request->email,
+                'role'=> 0,
+                'password' => Hash::make($request->password),
+            ]);
+        }
+        else {
+            $user->update([
+                'fname'=> $request->fname,
+                'lname'=> $request->lname,
+                'email'=> $request->email,
+                'role'=> 1,
+                'password' => Hash::make($request->password),
+            ]);
+        }
+
+        return redirect('/profile/'.$user->id)->with('success', 'Profile was Updated');
+
+    }
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 }
