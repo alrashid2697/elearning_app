@@ -43,6 +43,13 @@ Route::get('/admin/{user}/edituser', 'AdminController@editUser');
 Route::patch('/admin/listuser/{user}', 'AdminController@updateUser');
 Route::delete('/admin/listuser/{user}', 'AdminController@destroyUser');
 
+//User list for Follow/Unfollow
+Route::get('/users', 'UserController@listOfUsers');
+Route::get('/users/{followed_id}/follow', 'UserController@follow')->name('users.follow');
+Route::get('/users/{followed_id}/unfollow', 'UserController@unfollow')->name('users.unfollow');
+
+
+
 
 
 
