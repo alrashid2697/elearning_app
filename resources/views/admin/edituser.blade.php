@@ -76,16 +76,29 @@
                         </div>
 
                         <div class="form-group row">
-                            <div class="form-check mx-auto">
-                                <label class="form-check-label">
-                                  <input type="radio" class="form-check-input" name="role" id="admin" value="1">
-                                  Admin
-                                </label>
-                                <label class="form-check-label ml-5">
-                                  <input type="radio" class="form-check-input" name="role" id="user" value="0">
-                                  User
-                                </label>
-                              </div>
+                            @if ($user->role == 1)
+                                <div class="form-check mx-auto">
+                                    <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" name="role" id="admin" value="1" checked>
+                                    Admin
+                                    </label>
+                                    <label class="form-check-label ml-5">
+                                    <input type="radio" class="form-check-input" name="role" id="user" value="0">
+                                    User
+                                    </label>
+                                </div>
+                                @else
+                                <div class="form-check mx-auto">
+                                    <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" name="role" id="admin" value="1" >
+                                    Admin
+                                    </label>
+                                    <label class="form-check-label ml-5">
+                                    <input type="radio" class="form-check-input" name="role" id="user" value="0" checked>
+                                    User
+                                    </label>
+                                </div>
+                              @endif
                         </div>
 
                         <div class="form-group row mb-0">
