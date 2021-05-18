@@ -40,6 +40,11 @@ class User extends Authenticatable
     protected $attributes = [
         'role' => 1,
     ];
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
 
     public function following()
     {
@@ -56,4 +61,17 @@ class User extends Authenticatable
             return false;
         }
     }
+<<<<<<< Updated upstream
+=======
+
+    public function followed($id)
+    {
+        return $this->belongsToMany('App\User', 'follows', 'follower_id', 'followed_id')->where('followed_id', '=', $id);
+    }
+
+    public function followers(){
+        return $this->belongsToMany('App\User', 'follows', 'followed_id','follower_id');
+    }
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 }

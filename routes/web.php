@@ -43,13 +43,35 @@ Route::get('/admin/{user}/edituser', 'AdminController@editUser');
 Route::patch('/admin/listuser/{user}', 'AdminController@updateUser');
 Route::delete('/admin/listuser/{user}', 'AdminController@destroyUser');
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
 //User list for Follow/Unfollow
 Route::get('/users', 'UserController@listOfUsers');
 Route::get('/users/{followed_id}/follow', 'UserController@follow')->name('users.follow');
 Route::get('/users/{followed_id}/unfollow', 'UserController@unfollow')->name('users.unfollow');
 
 
+<<<<<<< Updated upstream
 
+=======
+//User Profile
+Route::get('/profile/{users}', 'UserController@profile');
+Route::get('/users/following/{id}', 'UserController@following');
+Route::get('/users/followers/{id}', 'UserController@followers');
+Route::get('/users/{user}/editprofile', 'UserController@editProfile');
+Route::patch('/profile/{user}', 'UserController@updateProfile');
+
+//Questionnaire page
+// Route::get('','');
+
+
+
+
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 
 
 

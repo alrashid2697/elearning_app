@@ -1,3 +1,8 @@
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
 @extends('layouts.app')
 
 @section('content')
@@ -11,7 +16,11 @@
                 </div>
                 <div class="col-md-10">
                     <div class="card-body my-3 d-flex justify-content-between align-content-center ">
+<<<<<<< Updated upstream
                         <h2><a href="">{{$users->fname}}</a></h2>
+=======
+                        <h2><a href="{{url('/profile/'.$users->id)}}">{{$users->fname}}</a></h2>
+>>>>>>> Stashed changes
                         @if (auth()->user()->is_following($users->id) || auth()->user()->id == $users->id)
                             <a href="{{ route('users.unfollow',['followed_id'=>$users->id]) }}" class="btn btn-danger"> Unfollow</a>
                         @else
@@ -24,3 +33,7 @@
     @endforeach
 </div>
 @endsection
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
