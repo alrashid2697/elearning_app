@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Questionnaire;
 use App\Category;
 
 class CategoryController extends Controller
@@ -26,12 +27,15 @@ class CategoryController extends Controller
 
     }
 
-    public function show(Category $category)
+    public function show($id)
     {
+
+       $category = Category::with(['questions'])->where('id', '=', $id)->first();
 
        return view('/admin/infocategory', compact('category'));
 
     }
+
     public function edit(Category $category)
     {
 

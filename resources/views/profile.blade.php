@@ -3,9 +3,6 @@
 @section('content')
 <div class="container">
 
-<<<<<<< Updated upstream
-
-=======
 <div class="row">
     @if (Session::has('success'))
     <div class="col-md-12 alert alert-success mt-5 text-center text-uppercase" role="alert" >
@@ -41,7 +38,6 @@
             </div>
     </div>
 </div>
->>>>>>> Stashed changes
 
 </div>
 @endsection

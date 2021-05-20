@@ -3,15 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-<<<<<<< Updated upstream
-use App\User;
-=======
-<<<<<<< Updated upstream
-=======
 use Illuminate\Support\Facades\Hash;
 use App\User;
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 
 class UserController extends Controller
 {
@@ -19,11 +12,7 @@ class UserController extends Controller
     {
         return view('/user.index');
     }
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
+
 
     public function listOfUsers()
     {
@@ -46,8 +35,7 @@ class UserController extends Controller
         return redirect()->back();
     }
 
-<<<<<<< Updated upstream
-=======
+
     public function profile(User $users)
     {
         $following = $users->following()->get();
@@ -103,6 +91,5 @@ class UserController extends Controller
         return redirect('/profile/'.$user->id)->with('success', 'Profile was Updated');
 
     }
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+
 }
