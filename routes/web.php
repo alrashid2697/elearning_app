@@ -59,8 +59,8 @@ Route::patch('/profile/{user}', 'UserController@updateProfile');
 Route::get('/admin/{category}/infocategory/questionnaire','QuestionnaireController@show');
 Route::post('/admin/{category}/infocategory','QuestionnaireController@storeQuiz');
 Route::get('/admin/{category}/{questionnaire}/editquiz','QuestionnaireController@editQuiz');
-Route::patch('/admin/{category}/infocategory/edit','QuestionnaireController@updateQuiz');
-Route::delete('/admin/{category}/infocategory','QuestionnaireController@destroyQuiz');
+Route::patch('/admin/{category}/infocategory/{questionnaire}/edit','QuestionnaireController@updateQuiz');
+Route::delete('/admin/{category}/infocategory/{questionnaire}','QuestionnaireController@destroyQuiz');
 
 
 

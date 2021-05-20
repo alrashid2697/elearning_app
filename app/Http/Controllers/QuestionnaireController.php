@@ -36,16 +36,16 @@ class QuestionnaireController extends Controller
 
     }
 
-    public function editQuiz($id, Questionnaire $quiz)
+    public function editQuiz($id, Questionnaire $questionnaire)
     {
        $category = Category::with(['questions'])->where('id', '=', $id)->first();
 
-        return view('admin.editquiz', compact('quiz','category'));
+        return view('admin.editquiz', compact('questionnaire','category'));
     }
 
-    public function updateQuiz(Request $request, Category $category, Questionnaire $quiz)
+    public function updateQuiz(Request $request, Category $category, Questionnaire $questionnaire)
     {
-        $quiz->update([
+        $questionnaire->update([
             'question' => $request->question,
             'choice_1' => $request->choice_1,
             'choice_2' => $request->choice_2,
@@ -58,10 +58,10 @@ class QuestionnaireController extends Controller
         return redirect('/admin/'.$category->id.'/infocategory')->with('success', 'Questionnaire was Updated');
     }
 
-    public function destroyQuiz(Questionnaire $quiz, Category $category)
+    public function destroyQuiz(Category $category, Questionnaire $questionnaire)
     {
 
-        $quiz->delete();
+        $questionnaire->delete();
 
         return redirect('/admin/'.$category->id.'/infocategory')->with('success', 'Questionnaire was Deleted');
 

@@ -34,7 +34,7 @@
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Question</th>
-                    <th scope="col" >Answers</th>
+                    <th scope="col" >Choices</th>
                     <th scope="col">Actions</th>
                 </tr>
                 </thead>
@@ -45,10 +45,29 @@
                             <td>{{$quiz->question}}</td>
                             <td>
                                 <div class="d-inline-flex">
-                                    <div class="mr-4"> {{$quiz->choice_1}}</div>
+                                    @if ($quiz->answer == 1)
+                                    <div class="mr-4 text-success">{{$quiz->choice_1}}</div>
+                                    @else
+                                    <div class="mr-4">{{$quiz->choice_1}}</div>
+                                    @endif
+
+                                    @if ($quiz->answer == 2)
+                                    <div class="mr-4 text-success">{{$quiz->choice_2}}</div>
+                                    @else
                                     <div class="mr-4">{{$quiz->choice_2}}</div>
+                                    @endif
+
+                                    @if ($quiz->answer == 3)
+                                    <div class="mr-4 text-success">{{$quiz->choice_3}}</div>
+                                    @else
                                     <div class="mr-4">{{$quiz->choice_3}}</div>
+                                    @endif
+
+                                    @if ($quiz->answer == 4)
+                                    <div class="mr-4 text-success">{{$quiz->choice_4}}</div>
+                                    @else
                                     <div class="mr-4">{{$quiz->choice_4}}</div>
+                                    @endif
                                 </div>
                             </td>
                             <td>
@@ -57,7 +76,7 @@
                                         <a href="{{url('/admin/'.$category->id.'/'.$quiz->id.'/editquiz')}}" class="btn btn-warning"  role="button"><i class="bi bi-pencil-square"></i> </a>
                                     </li>
                                     <li class="list-inline-item">
-                                        <form action="/admin/{{$category->id}}/infocategory" method="post">
+                                        <form action="/admin/{{$category->id}}/infocategory/{{$quiz->id}}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <button  class ="btn btn-danger">

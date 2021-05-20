@@ -11,13 +11,13 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Question Text</label>
-                            <input type="text" class="form-control" id="question" name="question" value ="{{$qui}}" >
+                            <input type="text" class="form-control" id="question" name="question"  >
                           </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Choice 1</label>
-                            <input type="text" class="form-control" id="choice_1" name="choice_1" value ="{{}}" >
+                            <input type="text" class="form-control" id="choice_1" name="choice_1"  >
                             <div class="form-radio">
                                 <input class="form-radio-input" type="radio" name="answer"  value="1">
                                 <label class="form-radio-label" >
@@ -27,7 +27,7 @@
                          </div>
                          <div class="form-group">
                             <label>Choice 2</label>
-                            <input type="text" class="form-control" id="choice_2" name="choice_2" value ="{{}}" >
+                            <input type="text" class="form-control" id="choice_2" name="choice_2"  >
                             <div class="form-radio">
                                 <input class="form-radio-input" type="radio" name="answer"  value="2">
                                 <label class="form-radio-label" >
@@ -37,7 +37,7 @@
                          </div>
                          <div class="form-group">
                             <label>Choice 3</label>
-                            <input type="text" class="form-control" id="choice_3" name="choice_3" value ="{{}}" >
+                            <input type="text" class="form-control" id="choice_3" name="choice_3"  >
                             <div class="form-radio">
                                 <input class="form-radio-input" type="radio" name="answer"  value="3">
                                 <label class="form-radio-label" >
@@ -47,7 +47,7 @@
                          </div>
                          <div class="form-group">
                             <label>Choice 4</label>
-                            <input type="text" class="form-control" id="choice_4" name="choice_4" value ="{{}}" >
+                            <input type="text" class="form-control" id="choice_4" name="choice_4"  >
                             <div class="form-radio">
                                 <input class="form-radio-input" type="radio" name="answer"  value="4">
                                 <label class="form-radio-label" >
