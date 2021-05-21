@@ -48,6 +48,23 @@ Route::get('/users', 'UserController@listOfUsers');
 Route::get('/users/{followed_id}/follow', 'UserController@follow')->name('users.follow');
 Route::get('/users/{followed_id}/unfollow', 'UserController@unfollow')->name('users.unfollow');
 
+//User Profile
+Route::get('/profile/{users}', 'UserController@profile');
+Route::get('/users/following/{id}', 'UserController@following');
+Route::get('/users/followers/{id}', 'UserController@followers');
+Route::get('/users/{user}/editprofile', 'UserController@editProfile');
+Route::patch('/profile/{user}', 'UserController@updateProfile');
+
+//Questionnaire page
+Route::get('/admin/{category}/infocategory/questionnaire','QuestionnaireController@show');
+Route::post('/admin/{category}/infocategory','QuestionnaireController@storeQuiz');
+Route::get('/admin/{category}/{questionnaire}/editquiz','QuestionnaireController@editQuiz');
+Route::patch('/admin/{category}/infocategory/{questionnaire}/edit','QuestionnaireController@updateQuiz');
+Route::delete('/admin/{category}/infocategory/{questionnaire}','QuestionnaireController@destroyQuiz');
+
+
+
+
 
 
 //User Profile
