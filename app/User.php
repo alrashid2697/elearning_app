@@ -41,6 +41,7 @@ class User extends Authenticatable
         'role' => 1,
     ];
 
+
     public function following()
     {
         return $this->belongsToMany('App\User', 'follows', 'follower_id', 'followed_id');
@@ -56,4 +57,14 @@ class User extends Authenticatable
             return false;
         }
     }
+
+    public function followed($id)
+    {
+        return $this->belongsToMany('App\User', 'follows', 'follower_id', 'followed_id')->where('followed_id', '=', $id);
+    }
+
+    public function followers(){
+        return $this->belongsToMany('App\User', 'follows', 'followed_id','follower_id');
+    }
+
 }

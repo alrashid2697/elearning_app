@@ -50,6 +50,17 @@ Route::get('/users/{followed_id}/unfollow', 'UserController@unfollow')->name('us
 
 
 
+//User Profile
+Route::get('/profile/{users}', 'UserController@profile');
+Route::get('/users/following/{id}', 'UserController@following');
+Route::get('/users/followers/{id}', 'UserController@followers');
+Route::get('/users/{user}/editprofile', 'UserController@editProfile');
+Route::patch('/profile/{user}', 'UserController@updateProfile');
+
+
+
+
+
 
 
 
