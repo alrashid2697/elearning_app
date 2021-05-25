@@ -63,6 +63,18 @@ Route::patch('/admin/{category}/infocategory/{questionnaire}/edit','Questionnair
 Route::delete('/admin/{category}/infocategory/{questionnaire}','QuestionnaireController@destroyQuiz');
 
 
+// List of Category & Lesson page
+Route::get('/quiz/categorylist','QuizController@listCategory');
+Route::post('/lessons','QuizController@storeLesson')->name('lesson.store');
+Route::get('/lessons/{lesson}','QuizController@showLesson')->name('lesson.show');
+Route::post('/lessons/{lesson}/','QuizController@answerLesson')->name('lesson.answer');
+
+
+
+
+
+
+
 
 
 

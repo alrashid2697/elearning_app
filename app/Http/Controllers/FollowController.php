@@ -8,8 +8,4 @@ use App\User;
 class FollowController extends Controller
 {
     //
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 }

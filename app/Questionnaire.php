@@ -22,4 +22,11 @@ class Questionnaire extends Model
         return $this->belongsTo('App\Category');
     }
 
+    public function results()
+    {
+        return $this->belongsTo('App\Answer');
+    }
+
+
+
 }
