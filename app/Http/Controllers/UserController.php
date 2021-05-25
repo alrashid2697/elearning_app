@@ -14,6 +14,7 @@ class UserController extends Controller
         return view('/user.index');
     }
 
+
     public function listOfUsers()
     {
         $listOfUser = User::where('id', '!=', auth()->id())->get();
