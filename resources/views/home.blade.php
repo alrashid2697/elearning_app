@@ -10,7 +10,7 @@
                     <img src="{{asset('img/profile.jpg')}}" alt="" >
                 </div>
                 <div class="text ml-4">
-                    <h4 class="font-weight-light"> {{Auth::user()->name}}</h4>
+                    <h4 class="font-weight-light"> {{Auth::user()->fname}} {{Auth::user()->lname}}</h4>
                     <p class="text-primary"> Learned # Words <br> Learned  # Lessons </p>
                 </div>
             </div>
@@ -21,17 +21,39 @@
                     <div class="border-bottom">
                       <h2 class="font-weight-light py-3">Activities</h2>
                     </div>
+                    @foreach ($activities as $activity)
+
+                    @if($activity->notifiable_type == "App\Follow")
+
                     <div class="card-body">
+
                         <div class="d-flex my-2">
                             <div class="profile">
                                 <img src="{{asset('img/profile.jpg')}}" alt="" >
                             </div>
                             <div class="text ml-3">
-                                <h4 class="font-weight-light"> You took Nihongo 101 </h4>
-                                <p>14 minutes ago </p>
+
+                                <h4 class="font-weight-light"> You Followed  {{$activity->follow->followUser->fname }} </h4>
+                                <p> {{$activity->updated_at->diffForHumans()}} </p>
                             </div>
                         </div>
                     </div>
+                    @elseif($activity->notifiable_type == "App\Answer")
+                        <div class="card-body">
+                            <div class="d-flex my-2">
+                                <div class="profile">
+                                    <img src="{{asset('img/profile.jpg')}}" alt="" >
+                                </div>
+                                <div class="text ml-3">
+
+                                    <h4 class="font-weight-light"> You Took  {{$activity->answer->lesson->category->title }} </h4>
+                                    <p> {{$activity->updated_at->diffForHumans()}} </p>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                    @endforeach
+
                   </div>
             </div>
         </div>

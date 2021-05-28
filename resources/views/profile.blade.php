@@ -20,9 +20,16 @@
               </div>
                 @if (auth()->user()->id != $users->id)
                     @if (auth()->user()->is_following($users->id) || auth()->user()->id == $users->id)
-                        <a href="{{ route('users.unfollow',['followed_id'=>$users->id]) }}" class="btn btn-danger w-100"> Unfollow</a>
+                    <form action="{{ route('users.unfollow',['followed_id'=>$users->id]) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger w-100" type="submit"> Unfollow</button>
+                    </form>
                     @else
-                        <a href="{{ route('users.follow',['followed_id'=>$users->id]) }}" class="btn btn-primary w-100"> Follow</a>
+                    <form action="{{ route('users.follow',['followed_id'=>$users->id]) }}" method="POST">
+                        @csrf
+                        <button class="btn btn-primary w-100" type="submit"> Follow</button>
+                    </form>
                     @endif
                 @else
                     <a href="{{url('/users/' .auth()->user()->id . '/editprofile')}}" class="btn btn-primary w-100"  role="button">Edit Profile</a>
@@ -35,8 +42,69 @@
         <div class="card shadow">
             <div class="card-body">
                 <h1 class="card-title border-bottom">Activities </h1>
+                @if (auth()->user()->is_following($users->id) || auth()->user()->id == $users->id)
+                    @foreach ($activitiesOtherUser as $activity)
+                    @if($activity->notifiable_type == "App\Follow")
+                    <div class="card-body">
+                        <div class="d-flex my-2">
+                            <div class="profile">
+                                <img src="{{asset('img/profile.jpg')}}" alt="" >
+                            </div>
+                            <div class="text ml-3">
+                                <h4 class="font-weight-light">  {{$users->fname}} {{$users->lname}} Followed  <a href="{{url('/profile/'.$activity->follow->followUser->id)}}"> {{$activity->follow->followUser->fname }}  </a>  </h4>
+                                <p> {{$activity->updated_at->diffForHumans()}} </p>
+                            </div>
+                        </div>
+                    </div>
+                    @elseif($activity->notifiable_type == "App\Answer")
+                        <div class="card-body">
+                            <div class="d-flex my-2">
+                                <div class="profile">
+                                    <img src="{{asset('img/profile.jpg')}}" alt="" >
+                                </div>
+                                <div class="text ml-3">
+
+                                    <h4 class="font-weight-light"> {{$users->fname}} {{$users->lname}} Took  {{$activity->answer->lesson->category->title }} </h4>
+                                    <p> {{$activity->updated_at->diffForHumans()}} </p>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                    @endforeach
+
+                  @else
+
+                    @foreach ($activities as $activity)
+                        @if($activity->notifiable_type == "App\Follow")
+                        <div class="card-body">
+                            <div class="d-flex my-2">
+                                <div class="profile">
+                                    <img src="{{asset('img/profile.jpg')}}" alt="" >
+                                </div>
+                                <div class="text ml-3">
+                                    <h4 class="font-weight-light">  {{$users->fname}} {{$users->lname}} Followed  <a href="{{url('/profile/'.$activity->follow->followUser->id)}}"> {{$activity->follow->followUser->fname }}  </a>  </h4>
+                                    <p> {{$activity->updated_at->diffForHumans()}} </p>
+                                </div>
+                            </div>
+                        </div>
+                        @elseif($activity->notifiable_type == "App\Answer")
+                            <div class="card-body">
+                                <div class="d-flex my-2">
+                                    <div class="profile">
+                                        <img src="{{asset('img/profile.jpg')}}" alt="" >
+                                    </div>
+                                    <div class="text ml-3">
+
+                                        <h4 class="font-weight-light"> {{$users->fname}} {{$users->lname}} Took  {{$activity->answer->lesson->category->title }} </h4>
+                                        <p> {{$activity->updated_at->diffForHumans()}} </p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
+                  @endif
             </div>
-    </div>
+        </div>
 </div>
 
 </div>

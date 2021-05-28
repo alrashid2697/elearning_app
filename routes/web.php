@@ -45,8 +45,8 @@ Route::delete('/admin/listuser/{user}', 'AdminController@destroyUser');
 
 //User list for Follow/Unfollow
 Route::get('/users', 'UserController@listOfUsers');
-Route::get('/users/{followed_id}/follow', 'UserController@follow')->name('users.follow');
-Route::get('/users/{followed_id}/unfollow', 'UserController@unfollow')->name('users.unfollow');
+Route::post('/users/{followed_id}/follow', 'UserController@follow')->name('users.follow');
+Route::delete('/users/{followed_id}/unfollow', 'UserController@unfollow')->name('users.unfollow');
 
 //User Profile
 Route::get('/profile/{users}', 'UserController@profile');

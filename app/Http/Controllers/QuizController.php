@@ -5,6 +5,7 @@ use App\Questionnaire;
 use App\Answer;
 use App\Category;
 use App\Lesson;
+use App\Activity;
 use Illuminate\Http\Request;
 
 class QuizController extends Controller
@@ -40,14 +41,20 @@ class QuizController extends Controller
     public function answerLesson(Request $request, Lesson $lesson)
     {
 
-       Answer::create([
+       $answer = Answer::create([
             'quiz_id' => $request->quiz_id,
             'lesson_id' => $lesson->id,
             'ur_answer' => $request->answer_choice
             ]);
 
+
         if($request->currentPage >= $request->lastPage)
         {
+
+            $activity = $answer->activity()->create([
+                'user_id' => auth()->user()->id,
+                'notifiable_id' => $lesson->id
+            ]);
 
             return view('quiz.results',compact('lesson', $lesson));
         }

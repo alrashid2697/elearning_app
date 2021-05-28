@@ -19,4 +19,13 @@ class Category extends Model
     {
         return $this->hasMany('App\Lesson');
     }
+    public function activity()
+    {
+        return $this->morphMany('App\Activity','notifiable');
+
+    }
+    public function activities()
+    {
+        return $this->hasMany('App\Activity');
+    }
 }

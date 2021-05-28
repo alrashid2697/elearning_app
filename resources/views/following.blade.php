@@ -14,9 +14,16 @@
                     <h2><a href="{{url('/profile/'.$users->id)}}">{{$users->fname}}</a></h2>
                     @if (auth()->user()->id != $users->id)
                         @if (auth()->user()->is_following($users->id) || auth()->user()->id == $users->id)
-                            <a href="{{ route('users.unfollow',['followed_id'=>$users->id]) }}" class="btn btn-danger"> Unfollow</a>
+                        <form action="{{ route('users.unfollow',['followed_id'=>$users->id]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger" type="submit"> Unfollow</button>
+                        </form>
                         @else
-                            <a href="{{ route('users.follow',['followed_id'=>$users->id]) }}" class="btn btn-primary"> Follow</a>
+                        <form action="{{ route('users.follow',['followed_id'=>$users->id]) }}" method="POST">
+                            @csrf
+                            <button class="btn btn-primary" type="submit"> Follow</button>
+                        </form>
                         @endif
                     @endif
                 </div>

@@ -17,18 +17,21 @@ class Lesson extends Model
     }
     public function category()
     {
-        return $this->belongsTo('App\Category');
+        return $this->belongsTo('App\Category', 'category_id');
     }
     public function answers()
     {
-        return $this->hasMany('App\Answer');
+        return $this->hasMany('App\Answer', 'lesson_id');
     }
     public function result()
     {
         return $this->hasMany('App\Questionnaire');
 
     }
-
+    public function activities()
+    {
+        return $this->hasMany('App\Activity', 'id');
+    }
 
 
 }

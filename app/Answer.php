@@ -17,4 +17,13 @@ class Answer extends Model
     {
         return $this->hasMany('App\Questionnaire', 'id','quiz_id');
     }
+    public function activity()
+    {
+        return $this->morphMany('App\Activity','notifiable');
+
+    }
+    public function lesson()
+    {
+        return $this->belongsTo('App\Lesson','lesson_id');
+    }
 }
