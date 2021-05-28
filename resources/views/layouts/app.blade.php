@@ -55,7 +55,7 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Categories</a>
+                                <a class="nav-link" href="{{url('quiz/categorylist')}}">Categories</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{url('/users')}}">Users</a>
