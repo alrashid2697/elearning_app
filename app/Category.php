@@ -15,4 +15,8 @@ class Category extends Model
     {
         return $this->hasMany('App\Questionnaire');
     }
+    public function lesson()
+    {
+        return $this->hasMany('App\Lesson');
+    }
 }

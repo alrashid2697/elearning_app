@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAnswerkeyTable extends Migration
+class CreateAnswersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateAnswerkeyTable extends Migration
      */
     public function up()
     {
-        Schema::create('answerkey', function (Blueprint $table) {
+        Schema::create('answers', function (Blueprint $table) {
             $table->id();
             $table->foreignID('quiz_id')->constrained('questionnaires');
-            $table->foreignID('category_id')->constrained('categories');
-            $table->string('correct_answer');
+            $table->foreignID('lesson_id')->constrained('lessons');
+            $table->string('ur_answer');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateAnswerkeyTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('answerkey');
+        Schema::dropIfExists('answers');
     }
 }
